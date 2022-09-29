@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!--<!DOCTYPE html>-->
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>aaabbb</title>
+    <!-- 引入bootstrap -->
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="/webjars/vue/2.1.3/vue.js"></script>
+    <script src="/webjars/element-ui/2.15.9/lib/index.js"></script>
+</head>
+
+<!--<tr th:each="user : ${users}">-->
+<!--    <td th:text="${user.id}">0</td>-->
+<!--    <td th:text="${user.name}">Angus</td>-->
+<!--</tr>-->
+<div id="myP">
+
+<!--    <p @play="play" @pause="pause">{{isPlaying?zyl2:zyl1}}</p>-->
+<!--    <p @play="play" @pause="pause" :class="{zylc:isPlaying}" v-show="isPlaying">123</p>-->
+    <p @click="m1" :class="isPlaying?'zylc':''">321</p>
+    <audio id="mAudio" autoplay controls @gogo="gogo" @play="play" @pause="pause"
+           src="http://downsc.chinaz.net/files/download/sound1/201206/1638.mp3">222
+    </audio>
+</div>
+</html>
+<style>
+    .zylc{
+        color: red;
+    }
+</style>
+
+<script>
+    // $(function () {// 初始化内容
+    //     /*<![CDATA[*/
+    //     var loginhref= /*[[${#request.getAttribute('aaa')}]]*/
+    //     /*]]>*/
+    //     console.log(loginhref);
+    //     // window.location.href = "/test/2";
+    // });
+
+    var app = new Vue({
+        el: "#myP",
+        data: {
+            zyl1: "112233",
+            zyl2: "445566",
+            isPlaying: false,
+            myAudio : document.getElementById("mAudio")
+        },
+        methods: {
+            gogo: function () {
+                // console.log(this.zyl)
+                console.log("gogo")
+                this.isPlaying = true
+            },
+            play: function () {
+                // console.log(this.zyl)
+                console.log("play")
+                this.isPlaying = true
+            },
+            pause: function () {
+                // console.log(this.zyl)
+                console.log("pause")
+                this.isPlaying = false
+            },
+            m1: function () {
+                if (this.myAudio !== null) {
+                    if (this.myAudio.paused) {
+                        this.myAudio.play(); // 播放
+                    } else {
+                        this.myAudio.pause(); // 暂停
+                    }
+                }
+            }
+        }
+    });
+</script>

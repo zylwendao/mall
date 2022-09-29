@@ -1,0 +1,40 @@
+debug: true
+server:
+  port: 8081
+  servlet:
+    context-path: /dnc
+  maxPostSize: -1
+  maxHttpHeaderSize: 10240000
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+#    正式
+    url: jdbc:mysql://10.8.32.128:3306/dnc?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&autoReconnect=true&failOverReadOnly=false
+    username: dnc
+    password: mvtech@dnc@123!@#
+#正式ES环境
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch-mvtech-test
+      cluster-nodes: 10.8.32.160:9300,10.8.32.161:9300,10.8.32.162:9300
+      repositories:
+        enable: true
+
+
+mybatis:
+  typeAliasesPackage: com.mvTech.entity
+  mapperLocations:  classpath:mapper/**.xml
+
+# 日志配置
+logging:
+  config: classpath:config/logback-spring.xml
+# 运营商意愿分类-对应运营商意愿分类枚举类
+isp-InclinationIndexes:
+  ctcc: 1,2,3,4,5,6,7,8,9,10
+  cmcc: 1,11,12
+  cucc: 1,2,3,13,14,15,16,17,18
